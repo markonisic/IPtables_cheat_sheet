@@ -20,6 +20,8 @@ IPtables is one of the most well know firewalls(and quite effective as well) whi
     -   **POSTROUTING** – for altering packets as they are about to go out
     -   **FORWARD** – for packets routed through the box(or needs to be forwarded to a new connection/route)
 
+For this cheat sheet there’s a github repo with a downloadable version in .pdf : [LINK](https://github.com/markonisic/IPtables_cheat_sheet)
+
 ## IPtables commands
 
 ### How to display firewall rules
@@ -50,7 +52,7 @@ Example of a default iptables chain rules table
 
 Example of a verbose output
 
-**-Display rules from a NAT chain**
+**-Display rules for a NAT chain**
 
 ```
 # iptables -t nat -L
@@ -62,7 +64,7 @@ These output/display options can be combined with other display commands as well
 # iptables -t nat -L --line-numbers
 ```
 
-**– Display rules from a specific chain rule**
+**– Display rules for a specific chain rule**
 
 ```
 # iptables -L INPUT
@@ -74,7 +76,7 @@ These output/display options can be combined with other display commands as well
 # iptables -S INPUT
 ```
 
-**-Display rules from a chain and with active packets**
+**-Display rules for a chain and with active packets**
 
 ```
 # iptables -S INPUT -v
@@ -129,38 +131,38 @@ Iptables reads the rules by going from the first rule at the top of the chain th
 
 ### Block traffic
 
-**– Block an IP address to have any access to incoming traffic**
+**– Block an IP address to have access to incoming**
 
 ```
 # iptables -A INPUT -s 192.168.100.1 -j DROP
 ```
 
-**– Block a specific IP subnet from incoming**
+**– Block a specific IP subnet to incoming**
 
 ```
 # iptables -A INPUT -s 192.168.1.100/24 -j DROP
 ```
 
-**– Block an IP address and reject all packets**
+**– Block an IP address to reject all packets**
 
 ```
 # iptables -A INPUT -s 192.168.1.100 -j REJECT
 ```
 
-**– Block an incomming traffic from an IP address to a specific network interface**
+**– Block an IP address to a specific network interface on incoming**
 
 ```
 # iptables -A INPUT -i eth0 -s 192.168.1.102 -j DROP
 ```
 
-**– Block only TCP traffic from a speciffic IP address or IP range**
+**– Block only TCP traffic for a specific IP address or IP range**
 
 ```
 # iptables -A INPUT -p tcp -s 192.168.1.100 -j DROP
 # iptables -A INPUT -p tcp -s 192.168.1.100/24 -j DROP
 ```
 
-**– Block a speciffic port to receive any traffic**
+**– Drop traffic for a specific port(close port)**
 
 ```
 # iptables -A INPUT -p tcp --dport xxx -j DROP
@@ -280,7 +282,7 @@ This parameters here are also used as an example. What will be achieved here is 
 # iptables -A INPUT -p icmp -i eth0 -j DROP
 ```
 
-**– Block or allow access from a specific mac address**
+**– Block or allow access for a specific mac address**
 
 ```
 # iptables -A INPUT -m mac --mac-source 00:00:00:00:00:00 -j DROP
