@@ -20,7 +20,6 @@ IPtables is one of the most well know firewalls(and quite effective as well) whi
     -   **POSTROUTING** – for altering packets as they are about to go out
     -   **FORWARD** – for packets routed through the box(or needs to be forwarded to a new connection/route)
 
-For this cheat sheet there’s a github repo with a downloadable version in .pdf : [LINK](https://github.com/markonisic/IPtables_cheat_sheet)
 
 ## IPtables commands
 
